@@ -6,6 +6,8 @@ box-sizing: border-box;
 .header {
     grid-area: header;
 background-color: brown;
+display:inline-block;
+
 }
 
 .left-menu {
@@ -23,12 +25,58 @@ background-color: brown;
     background-color: aqua;
 }
 
+.shortcuts{
+    grid-area: shortcuts;
+    background-color: blue;
+}
 .container {
     height: 100vh;
     background-color: crimson;
     display: grid;
     grid-template:
-   "header header header" 50px
-   "left-menu main right-menu" 1fr /
-   200px 1fr 300px;
+   "header header header header" auto
+   "left-menu main right-menu shortcuts" 1fr /
+   200px 1fr 200px auto;
+}
+ img{
+    border-radius: 8px;
+    padding: 10px;
+    width: 150px;
+ }
+ 
+ .search{
+     width:150px;
+ }
+
+@media screen and (max-width: 740px) {
+    .container { 
+        grid-template:
+       "header header header" auto
+       "left-menu main right-menu" 1fr/
+       200px 1fr 200px;
+    }
+
+   .shortcuts{
+        display: none;
+    }
+}
+
+@media screen and (max-width: 670px){
+    .container { 
+        grid-template:
+       "header header" auto
+       "left-menu main" 1fr
+       "right-menu right-menu" auto/
+       200px 1fr;
+    }
+}
+
+@media screen and (max-width: 500px){
+    .container { 
+        grid-template:
+       "header header" auto
+       "left-menu main" 1fr
+       "right-menu right-menu" auto/
+       50px 1fr;
+    }
 }
